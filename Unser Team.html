@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unser Team – Slideshow</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    #slide {
+      max-width: 80vw;
+      max-height: 70vh;
+      border: 5px solid red;
+      border-radius: 15px;
+      box-shadow: 0 0 25px red;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>👥 Unser Team – Slideshow</h1>
+
+  <img id="slide" src="bilder/screenshot1.jpg" alt="Team Screenshot" />
+
+  <script>
+    const bilder = [
+      "bilderscreenshot1.jpg",
+      "bilderscreenshot2.jpg",
+      "bilderscreenshot3.jpg",
+      "bilderscreenshot4.jpg",
+    ];
+    let index = 0;
+    const slide = document.getElementById('slide');
+
+    setInterval(() => {
+      index = (index + 1) % bilder.length;
+      slide.src = bilder[index];
+    }, 3000);
+  </script>
+
+</body>
+</html>

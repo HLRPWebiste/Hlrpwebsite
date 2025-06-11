@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bewertung per E-Mail</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .star {
+      color: gray;
+    }
+
+    .star.hover,
+    .star.selected {
+      color: gold;
+    }
+
+    textarea {
+      margin-top: 20px;
+      width: 300px;
+      height: 100px;
+      border-radius: 8px;
+      padding: 10px;
+      border: none;
+      resize: none;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: red;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⭐ Gib uns deine Bewertung!</h1>
+
+  <form id="bewertungsForm" method="POST">
+    <div class="stars" id="stars">
+      <span class="star" data-value="1">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="5">★</span>
+    </div>
+
+    <textarea id="kommentar" placeholder="Deine Meinung..." required></textarea><br>
+
+    <input type="hidden" name="subject" value="Neue Bewertung">
+    <input type="hidden" name="body" id="mailBody">
+
+    <button type="button" onclick="bewertungAbsenden()">Per Mail senden</button>
+  </form>
+
+  <script>
+    const sterne = document.querySelectorAll('.star');
+    let bewertung = 0;
+
+    sterne.forEach((stern, index) => {
+      stern.addEventListener('mouseover', () => highlight(index + 1));
+      stern.addEventListener('mouseout', () => highlight(bewertung));
+      stern.addEventListener('click', () => {
+        bewertung = index + 1;
+        highlight(bewertung);
+      });
+    });
+
+    function highlight(count) {
+      sterne.forEach((stern, i) => {
+        stern.classList.toggle('hover', i < count);
+        stern.classList.toggle('selected', i < count);
+      });
+    }
+
+    function bewertungAbsenden() {
+      const kommentar = document.getElementById('kommentar').value;
+      if (bewertung === 0) {
+        alert("Bitte wähle eine Bewertung.");
+        return;
+      }
+
+      // Mail vorbereiten
+      const empfaenger = "timhuyertim@gmail.com"; // <-- DEINE E-MAIL HIER EINFÜGEN
+      const betreff = encodeURIComponent("Neue Bewertung für deine Website");
+      const text = encodeURIComponent(
+        `Neue Bewertung:\n\nSterne: ${bewertung} von 5\nKommentar:\n${kommentar}`
+      );
+
+      // Öffne Mailprogramm
+      window.location.href = `mailto:${empfaenger}?subject=${betreff}&body=${text}`;
+    }
+  </script>
+
+</body>
+</html>

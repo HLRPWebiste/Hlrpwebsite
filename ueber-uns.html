@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Über uns – HLRP Roblox</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: rgba(20, 20, 20, 0.9);
+      text-align: center;
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #ff0000;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bgCanvas"></canvas>
+
+  <header>
+    <h1>Über uns</h1>
+    <p>Das Team hinter HLRP Roblox</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="ueber-uns.html">Über uns</a>
+    <a href="regeln.html">Regeln</a>
+    <a href="Unser Team.html">Unser Team</a>
+  </nav>
+
+  <main>
+    <div class="card">
+      <h2>🌟 Wer wir sind</h2>
+      <p>HLRP Roblox ist ein deutschsprachiger Roleplay-Server mit Fokus auf Realismus, Struktur und Spaß. Unser Ziel ist es, dir ein professionelles RP-Erlebnis zu bieten.</p>
+    </div>
+
+    <div class="card">
+      <h2>👥 Unser Team</h2>
+      <ul>
+        <li><strong>Gründer:</strong> Maxe</li>
+        <li><strong>Co-Owner:</strong> Chrischi</li>
+        <li><strong>Admins & Mods:</strong> Erfahrenes Support-Team</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 HLRP Roblox – Alle Rechte vorbehalten.
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("bgCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let width, height;
+    let lines = [];
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function createLine() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        length: Math.random() * 100 + 50,
+        speed: Math.random() * 1 + 0.5,
+        alpha: Math.random() * 0.5 + 0.3
+      };
+    }
+
+    for (let i = 0; i < 50; i++) {
+      lines.push(createLine());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let line of lines) {
+        ctx.beginPath();
+        ctx.moveTo(line.x, line.y);
+        ctx.lineTo(line.x + line.length, line.y);
+        ctx.strokeStyle = `rgba(255, 0, 0, ${line.alpha})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        line.x += line.speed;
+        if (line.x > width) {
+          Object.assign(line, createLine(), { x: -line.length });
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
