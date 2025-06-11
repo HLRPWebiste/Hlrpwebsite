@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HLRP Roblox</title>
+  <style>
+    /* Grundstil */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Animierter Hintergrund */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: rgba(20, 20, 20, 0.9);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #ff0000;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    a {
+      color: #ff4d4d;
+    }
+  </style>
+</head>
+  <body>
+
+
+  <canvas id="bgCanvas"></canvas>
+
+  <header>
+    <h1>HLRP Roblox</h1>
+    <p>Willkommen auf unserem Roleplay-Server!</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="ueber-uns.html">Über uns</a>
+    <a href="regeln.html">Regeln</a>
+    <a href="Unser Team.html">Unser Team</a>
+    <a href="login.html">Admin</a>
+    <a href="Bewertung.html">Bewertung</a>
+  </nav>
+
+  <main>
+    <div class="card">
+      <h2>Was ist HLRP?</h2>
+      <p>HLRP steht für „Hamburg Life Roleplay“ – ein realistischer Roblox RP-Server mit Qualität.</p>
+    </div>
+
+    <div class="card">
+      <h2>Trete unserem Discord bei</h2>
+      <p>Diskussionen, Bewerbungen und Events findest du dort.</p>
+      <a href="https://discord.gg/hlrpde" target="_blank">➡ Zum Discord-Server</a>
+    </div>
+  </main>
+    <!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>HLRP Startseite</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #carouselText {
+      font-size: 1.5rem;
+      animation: fade 1s ease-in-out;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .discord-button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #5865F2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .discord-button:hover {
+      background-color: #404eed;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Willkommen bei HLRP Roblox</h1>
+
+  <div id="carouselText">🚓 Trete unserem Discord bei!</div>
+
+  <a class="discord-button" href="https://discord.gg/hlrpde" target="_blank">
+    🔗 Jetzt beitreten
+  </a>
+
+  <script>
+    const texte = [
+      "🚓 Trete unserem Discord bei!",
+      "👥 Werde Teil unserer RP-Community!",
+      "🎮 Realistisches Roleplay auf Roblox!",
+      "🕵️‍♂️ Verschiedene Fraktionen & Fahrzeuge!",
+      "💬 Aktive Moderation und Support!"
+    ];
+
+    let index = 0;
+    const karussell = document.getElementById("carouselText");
+
+    setInterval(() => {
+      index = (index + 1) % texte.length;
+      karussell.textContent = texte[index];
+      karussell.style.animation = "none";
+      void karussell.offsetWidth; // Trick zum Neustarten der Animation
+      karussell.style.animation = "fade 1s ease-in-out";
+    }, 3000);
+  </script>
+
+</body>
+</html>
+
+    
+    <div id="about">
+  <p id="aboutText">🔧 Wir sind ein professionelles RP-Team.</p>
+</div>
+
+<script>
+const texte = [
+  "🚓 HLRP – realistisch und spannend!",
+  "👥 Werde Teil unserer Community.",
+  "🎮 Für Anfänger & Profis geeignet!",
+  "🛠️ Moderner RP-Server auf Roblox."
+];
+let i = 0;
+setInterval(() => {
+  document.getElementById("aboutText").textContent = texte[i];
+  i = (i + 1) % texte.length;
+}, 3000);
+</script>
+
+  <footer>
+    © 2025 HLRP Roblox – Alle Rechte vorbehalten.
+  </footer>
+
+  <!-- Animierter roter Linien-Hintergrund mit Canvas -->
+  <script>
+    const canvas = document.getElementById("bgCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let width, height;
+    let lines = [];
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    // Linie erstellen
+    function createLine() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        length: Math.random() * 100 + 50,
+        speed: Math.random() * 1 + 0.5,
+        alpha: Math.random() * 0.5 + 0.3
+      };
+    }
+
+    // Initiale Linien
+    for (let i = 0; i < 50; i++) {
+      lines.push(createLine());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let line of lines) {
+        ctx.beginPath();
+        ctx.moveTo(line.x, line.y);
+        ctx.lineTo(line.x + line.length, line.y);
+        ctx.strokeStyle = `rgba(255, 0, 0, ${line.alpha})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        line.x += line.speed;
+        if (line.x > width) {
+          Object.assign(line, createLine(), { x: -line.length });
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
